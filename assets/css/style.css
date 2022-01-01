@@ -12,6 +12,8 @@ header{
 }
 main{
     text-align: center;
+    margin: 10px auto;
+    width: 600px;
 }
 main h1{
     font-size: 200%;
@@ -26,4 +28,13 @@ button{
     padding: 5px;
     border-radius: 4px;
     margin: 10px 0px;
+}
+ol{
+    list-style-type: decimal;
+    margin: 0px auto;
+    width: 200px;
+}
+ol li {
+    display: list-item;
+    text-align: left;
 }

@@ -3,7 +3,9 @@ var endcard = document.querySelector(".endcard");
 var answers = document.querySelector(".answers");
 var answerDisplay = document.querySelector(".correctOrNot");
 var timeDisplay = document.querySelector(".timeDisplay");
-var scoreDisplay = document.querySelector(".scoreDisplay")
+var scoreDisplay = document.querySelector(".scoreDisplay");
+var initials = document.querySelector("#initials");
+var submit = document.querySelector(".submitInit");
 var questionOrder = [1, 2, 3, 4];
 var gameInProg = true;
 
@@ -102,10 +104,29 @@ function endgame() {
     endcard.style.display = "";
 }
 
+function recordScore(event){
+    event.preventDefault();
+    let player = {
+        init: initials.value,
+        initScore: timeCount
+    }
+    if(localStorage.getItem("scoreBoard") != null){
+        let scoreBoard = JSON.parse(localStorage.getItem("scoreBoard"));
+        console.log(scoreBoard);
+        scoreBoard.push(player);
+        scoreBoard.sort(function(a,b) {return b.initScore - a.initScore});
+        localStorage.setItem("scoreBoard", JSON.stringify(scoreBoard));
+    }
+    else{
+        localStorage.setItem("scoreBoard", JSON.stringify([player]));
+    }
+    window.location = "../html/scores.html";
+}
 
 answerDisplay.style.display = "none";
 endcard.style.display = "none";
 for (let i = 0; i < answers.children.length; i++) {
     answers.children[i].addEventListener("click", function () { checkAnswer(i) });
 }
+submit.addEventListener("click", recordScore);
 startgame();

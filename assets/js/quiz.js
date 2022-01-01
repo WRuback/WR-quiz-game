@@ -2,6 +2,8 @@ var quiz = document.querySelector(".quiz");
 var endcard = document.querySelector(".endcard");
 var answers = document.querySelector(".answers");
 var answerDisplay = document.querySelector(".correctOrNot");
+var timeDisplay = document.querySelector(".timeDisplay");
+var scoreDisplay = document.querySelector(".scoreDisplay")
 var questionOrder = [1, 2, 3, 4];
 var gameInProg = true;
 
@@ -24,6 +26,9 @@ var quizQuestions = [
         "5 cards for the first player, 6 for the second."]
 ];
 var nextQuestion = 0;
+var timeCount = 60;
+var timerInterval = "";
+var displayResult = "";
 
 function BuildQuestion(question) {
     for (let i = questionOrder.length - 1; i > 0; i--) {
@@ -42,26 +47,28 @@ function BuildQuestion(question) {
 }
 
 function checkAnswer(index) {
-    console.log(questionOrder);
-    console.log(questionOrder[index]);
     if (questionOrder[index] === 1) {
         answerDisplay.textContent = "Correct!";
     }
     else {
         answerDisplay.textContent = "Wrong Answer!";
+        timeCount -= 10;
+        if(timeCount <= 10 && timerInterval != ""){
+            clearInterval(timerInterval);
+            timeCount = 0;
+            endgame();
+        }
     }
     answerDisplay.style.display = "";
-    for (let i = 0; i < answers.children.length; i++) {
-        answers.children[i].disabled = true;
+    questionLoop();
+    if(displayResult != ""){
+        clearTimeout(displayResult);
     }
-    var timeInterval = setTimeout(function () {
+    displayResult = setTimeout(function () {
         answerDisplay.style.display = "none";
-        for (let i = 0; i < answers.children.length; i++) {
-            answers.children[i].disabled = false;
-        }
-        questionLoop();
-    }, 2000);
+    }, 1000);
 }
+
 function questionLoop(){
     if (nextQuestion != quizQuestions.length)
     {
@@ -69,16 +76,29 @@ function questionLoop(){
         nextQuestion++;
     }
     else{
+        clearInterval(timerInterval);
         endgame();
     }
 }
+
 function startgame(){
     gameInProg = true;
     questionLoop();
+    timerInterval = setInterval(function () {
+        timeCount--;
+        timeDisplay.textContent = "timer: " + timeCount;
+        if (timeCount <= 0){
+          clearInterval(timerInterval);
+          timeCount = 0;
+          endgame();
+        }
+      }, 1000);
 }
+
 function endgame() {
     gameInProg = false;
     quiz.style.display = "none";
+    scoreDisplay.textContent = "Score: " + timeCount;
     endcard.style.display = "";
 }
 

@@ -1,5 +1,5 @@
 body{
-    background-color: darkslategray;
+    background-color: rgb(34, 54, 54);
     color:gainsboro;
     font-size: 16;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -8,12 +8,25 @@ header{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    padding: 20px;
+    padding: 30px 15px;
+    border-bottom: 5px solid gainsboro;
+    background-color: darkslategray;
+}
+header p, header a {
+    font-size: 130%;
+    padding: 0px 15px;
+}
+.spacer {
+    max-width: 660px;
+    margin: 0px auto;
 }
 main{
     text-align: center;
-    margin: 10px auto;
-    width: 600px;
+    margin: 15px 30px;
+    padding: 0px 30px;
+    border: 8px solid rgb(17, 29, 29);
+    border-radius: 16px;
+    background-color: darkslategray;
 }
 main h1{
     font-size: 200%;
@@ -25,16 +38,41 @@ main p{
 }
 button{
     background-color: rgb(65, 163, 163);
+    color: black;
+    border: 3px solid rgb(17, 29, 29);
     padding: 5px;
     border-radius: 4px;
-    margin: 10px 0px;
+    margin: 10px auto;
 }
 ol{
     list-style-type: decimal;
     margin: 0px auto;
-    width: 200px;
+    width: 60%;
+    background-color: rgb(65, 163, 163);
+    border: 3px solid rgb(17, 29, 29);
 }
 ol li {
     display: list-item;
     text-align: left;
+    font-size: 110%;
+    margin: 5px 5px 5px 27px;
+    color: black;
+}
+a{
+    text-decoration-line: none;
+    color:gainsboro;
+}
+a:hover{
+    text-decoration-line: underline;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    text-align: left;
+}
+.answers button{
+    display: block;
+    margin: 5px 0px;
 }

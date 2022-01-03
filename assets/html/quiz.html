@@ -12,29 +12,31 @@
 
 <body>
     <header>
-        <a>View High Scores</a>
+        <a href='../../index.html'>Go Back. (End Game.)</a>
         <p class="timeDisplay">timer: 60</p>
     </header>
-    <main>
-        <div class="quiz">
-            <h1>This is the first question.</h2>
-            <section class="answers">
-                <button id="answer1">Answer 1</button>
-                <button id="answer2">Answer 2</button>
-                <button id="answer3">Answer 3</button>
-                <button id="answer4">Answer 4</button>
-            </section>
-        </div>
-        <div class="endcard">
-            <p>Thanks for playing!</p>
-            <p class="scoreDisplay">Your Score: </p>
-            <form>
-                <input type="text" id="initials" name="playerInit">
-                <button class="submitInit">Test</button>
-            </form>
-        </div>
-        <p class="correctOrNot">Correct!</p>
-    </main>
+    <div class="spacer">
+        <main>
+            <div class="quiz">
+                <h1>This is the first question.</h2>
+                    <section class="answers">
+                        <button>Answer 1</button>
+                        <button>Answer 2</button>
+                        <button>Answer 3</button>
+                        <button>Answer 4</button>
+                    </section>
+            </div>
+            <div class="endcard">
+                <p>Thanks for playing!</p>
+                <p class="scoreDisplay">Your Score: </p>
+                <form>
+                    <input type="text" id="initials" name="playerInit" placeholder="Initials (Max 3)">
+                    <button class="submitInit">Submit Score</button>
+                </form>
+            </div>
+            <p class="correctOrNot">Correct!</p>
+        </main>
+    </div>
     <script src="../js/quiz.js"></script>
 </body>
 

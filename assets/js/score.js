@@ -11,6 +11,8 @@ if(localStorage.getItem("scoreBoard") != null)
         scoreList.appendChild(listItem);
 
     }
+} else{
+    scoreList.style.opacity = "0";
 }
 
 
@@ -22,4 +24,5 @@ clearButton.addEventListener("click",function(event){
         scoreList.children[i].style.display = "none";
 
     }
-})
+    scoreList.style.opacity = "0";
+});

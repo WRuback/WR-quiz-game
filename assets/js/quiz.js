@@ -55,19 +55,21 @@ function checkAnswer(index) {
     else {
         answerDisplay.textContent = "Wrong Answer!";
         timeCount -= 10;
+        timeDisplay.textContent = "timer: " + timeCount;
         if(timeCount <= 10 && timerInterval != ""){
             clearInterval(timerInterval);
             timeCount = 0;
+            timeDisplay.textContent = "timer: " + timeCount;
             endgame();
         }
     }
-    answerDisplay.style.display = "";
+    answerDisplay.style.opacity = "1";
     questionLoop();
     if(displayResult != ""){
         clearTimeout(displayResult);
     }
     displayResult = setTimeout(function () {
-        answerDisplay.style.display = "none";
+        answerDisplay.style.opacity = "0";
     }, 1000);
 }
 
@@ -106,8 +108,11 @@ function endgame() {
 
 function recordScore(event){
     event.preventDefault();
+    if(initials.value === ""){
+        initials.value = "NAN";
+    }
     let player = {
-        init: initials.value,
+        init: initials.value.toUpperCase().slice(0,3),
         initScore: timeCount
     }
     if(localStorage.getItem("scoreBoard") != null){
@@ -123,7 +128,7 @@ function recordScore(event){
     window.location = "../html/scores.html";
 }
 
-answerDisplay.style.display = "none";
+answerDisplay.style.opacity = "0";
 endcard.style.display = "none";
 for (let i = 0; i < answers.children.length; i++) {
     answers.children[i].addEventListener("click", function () { checkAnswer(i) });

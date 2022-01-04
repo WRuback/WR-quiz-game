@@ -24,7 +24,22 @@ var quizQuestions = [
         "5 cards.",
         "4 cards.",
         "6 cards.",
-        "5 cards for the first player, 6 for the second."]
+        "5 cards for the first player, 6 for the second."],
+    ["What chess piece can only move foward?",
+        "Pawn.",
+        "King.",
+        "Knight.",
+        "Rook."],
+    ["How many cards are in a standard deck of playing cards?",
+        "54 cards.",
+        "52 cards.",
+        "48 cards.",
+        "53 cards."],
+    ["Which board game was made into a film with multiple endings?",
+        "Clue.",
+        "Battleship.",
+        "Jumanji.",
+        "Ouija."],
 ];
 // Stores the order the answers will appear in.
 var questionOrder = [1, 2, 3, 4];
